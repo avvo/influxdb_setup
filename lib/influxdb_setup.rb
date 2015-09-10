@@ -9,3 +9,5 @@ module InfluxdbSetup
   autoload :LoadQueries, "influxdb_setup/load_queries"
   autoload :SetupShardSpaces, "influxdb_setup/setup_shard_spaces"
 end
+
+require "influxdb_setup/railtie" if defined?(Rails)
