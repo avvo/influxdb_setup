@@ -94,8 +94,8 @@ git commits and tags, and push the `.gem` file to
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at
-https://github.com/[USERNAME]/influxdb_setup.
+Bug reports and pull requests are welcome on GitLab at
+https://gitlab.corp.avvo.com/avvo/influxdb_setup.
 
 
 ## License
