@@ -4,19 +4,17 @@ For configuring the influxdb database, shard spaces, and continuous queries.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add these lines to your application's Gemfile:
 
 ```ruby
+source 'http://gems.corp.avvo.com'
+
 gem 'influxdb_setup'
 ```
 
 And then execute:
 
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install influxdb_setup
 
 ## Usage
 
