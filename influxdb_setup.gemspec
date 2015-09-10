@@ -18,6 +18,8 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  spec.metadata["allowed_push_host"] = "http://gems.corp.avvo.com"
+
   spec.add_dependency "influxdb", "~> 0.1.9"
 
   spec.add_development_dependency "bundler", "~> 1.10"
