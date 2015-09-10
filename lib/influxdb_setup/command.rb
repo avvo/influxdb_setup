@@ -3,5 +3,9 @@ module InfluxdbSetup
     def initialize(config)
       @config = config
     end
+
+    def log(message)
+      puts "[InfluxdbSetup] #{message}"
+    end
   end
 end

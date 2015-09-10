@@ -8,7 +8,7 @@ module InfluxdbSetup
       unless databases.include?(db)
         root.create_database(db)
       else
-        puts "Influxdb database '#{db}' already exists"
+        log "Influxdb database '#{db}' already exists"
       end
     end
   end

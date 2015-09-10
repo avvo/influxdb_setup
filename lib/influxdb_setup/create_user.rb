@@ -11,7 +11,7 @@ module InfluxdbSetup
       unless users.include?(db)
         root.create_database_user(db, user, pass)
       else
-        puts "Influxdb user '#{user}'@'#{db}' already exists"
+        log "Influxdb user '#{user}'@'#{db}' already exists"
       end
     end
   end

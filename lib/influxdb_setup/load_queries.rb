@@ -14,18 +14,18 @@ module InfluxdbSetup
       no_change = 0
       expected_queries.each do |query|
         unless existing_queries.values.include?(query)
-          puts "Adding '#{query}'"
+          log "Adding '#{query}'"
           root.query query
         else
           no_change += 1
         end
       end
 
-      puts "There were #{no_change} continuous queries that required no updates"
+      log "There were #{no_change} continuous queries that required no updates"
 
       existing_queries.each do |(id, query)|
         unless expected_queries.include?(query)
-          puts "Removing '#{query}'"
+          log "Removing '#{query}'"
           root.query "drop continuous query #{id}"
         end
       end
