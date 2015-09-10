@@ -1,0 +1,40 @@
+require 'yaml'
+require 'erb'
+
+module InfluxdbSetup
+  class Config
+    def initialize
+      @env = defined?(Rails) ? Rails.env : ENV.fetch('RAILS_ENV', 'development')
+      @config = YAML.load(ERB.new(File.read("config/influxdb.yml")).result)[@env]
+    end
+
+    def db_name
+      @config['db_name']
+    end
+
+    def enabled?
+      @config['enabled']
+    end
+
+    def username
+      @config['username']
+    end
+
+    def password
+      @config['password']
+    end
+
+    def build_client(database = "", options = {})
+      InfluxDB::Client.new(database,
+                          {
+                            username: "root",
+                            password: "root",
+                            hosts:    @config["hosts"],
+                            port:     @config.fetch("port", 8086),
+                            async:    @config.fetch("async", false),
+                            use_ssl:  @config.fetch("use_ssl", false),
+                            retry:    @config.fetch("retry", false),
+                          }.merge(options))
+    end
+  end
+end
