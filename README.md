@@ -78,6 +78,25 @@ Make sure your queries match what the server coerces them into (no spaces
 after commas) by running the `rake influxdb:load_queries` task multiple times.
 If there's queries to update the task will not do anything.
 
+## Rake tasks
+
+`rake influxdb:create_db`
+Creates the database for the service if it doesn't already exist.
+
+`rake influxdb:setup_shard_spaces`
+Creates or updates the default and archives shard spaces. If they don't exist,
+it creates them. If they do exist but they are not correct, it updates them.
+
+`rake influxdb:create_user`
+Creates the user for the service if it doesn't already exist.
+
+`rake influxdb:load_queries`
+Creates any continuous queries that are missing. Removes queries that are not
+in the `db/influxdb_queries.yml` file.
+
+`rake influxdb:setup`
+Runs all the above rake tasks.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run
