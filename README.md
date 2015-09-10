@@ -16,6 +16,9 @@ And then execute:
 
     $ bundle
 
+To have the task run on deploy, add `require "influxdb_setup/capistrano"` to
+your `config/deploy.rb`.
+
 ## Usage
 
 This library expects your influxdb config to be located in the
@@ -61,9 +64,6 @@ production:
 docker:
   <<: *default
 ```
-
-To have the task run on deploy, add `require "influxdb_setup/capistrano"` to
-your `config/deploy.rb`.
 
 To add continuous queries, just add them to the `db/influxdb_queries.yml`, for
 example:
