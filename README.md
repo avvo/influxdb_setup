@@ -109,6 +109,13 @@ release a new version, update the version number in `version.rb`, and then run
 git commits and tags, and push the `.gem` file to
 [rubygems.org](https://rubygems.org).
 
+To cut a gem:
+
+1. Bump the version in `lib/influxdb_setup/version.rb`
+2. Build the gem `gem_push=no rake release`
+3. Push to geminabox `gem inabox pkg/influxdb_setup-0.1.0.gem` (or whatever
+version you just cut.)
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitLab at
