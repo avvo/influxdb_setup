@@ -31,9 +31,9 @@ module InfluxdbSetup
                             password: "root",
                             hosts:    @config["hosts"],
                             port:     @config.fetch("port", 8086),
-                            async:    @config.fetch("async", false),
+                            async:    false,
                             use_ssl:  @config.fetch("use_ssl", false),
-                            retry:    @config.fetch("retry", false),
+                            retry:    false,
                           }.merge(options))
     end
   end
