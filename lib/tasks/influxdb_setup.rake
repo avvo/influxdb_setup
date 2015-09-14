@@ -23,6 +23,11 @@ namespace :influxdb do
     @influxdb_setup.load_queries
   end
 
+  desc "Log deploy in influxdb"
+  task :mark_deploy, [:commit] => [:config] do |t, args|
+    @influxdb_setup.mark_deploy(args[:commit])
+  end
+
   desc "Run all the tasks to setup influxdb for the service"
   task :setup => [:create_db,
                   :setup_shard_spaces,

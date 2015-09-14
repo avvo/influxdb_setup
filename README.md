@@ -16,8 +16,14 @@ And then execute:
 
     $ bundle
 
+## Capistrano Integration
+
 To have the task run on deploy, add `require "influxdb_setup/capistrano"` to
 your `config/deploy.rb`.
+
+This will run the setup on deploy (creating database, shard spaces, and
+continuous queries). It will also mark the deploy in the "deploys" table in
+your influxdb.
 
 ## Usage
 

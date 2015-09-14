@@ -7,6 +7,7 @@ module InfluxdbSetup
   autoload :CreateDb, "influxdb_setup/create_db"
   autoload :CreateUser, "influxdb_setup/create_user"
   autoload :LoadQueries, "influxdb_setup/load_queries"
+  autoload :MarkDeploy, "influxdb_setup/mark_deploy"
   autoload :SetupShardSpaces, "influxdb_setup/setup_shard_spaces"
 end
 

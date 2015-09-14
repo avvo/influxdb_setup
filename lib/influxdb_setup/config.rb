@@ -4,8 +4,11 @@ require 'erb'
 module InfluxdbSetup
   class Config
     def initialize
-      @env = defined?(Rails) ? Rails.env : ENV.fetch('RAILS_ENV', 'development')
-      @config = YAML.load(ERB.new(File.read("config/influxdb.yml")).result)[@env]
+      @config = YAML.load(ERB.new(File.read("config/influxdb.yml")).result)[env]
+    end
+
+    def env
+      defined?(Rails) ? Rails.env : ENV.fetch('RAILS_ENV', 'development')
     end
 
     def db_name

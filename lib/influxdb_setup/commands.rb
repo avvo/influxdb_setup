@@ -21,5 +21,9 @@ module InfluxdbSetup
     def load_queries
       LoadQueries.new(config).call if @config.enabled?
     end
+
+    def mark_deploy(commit)
+      MarkDeploy.new(config).call(commit) if @config.enabled?
+    end
   end
 end

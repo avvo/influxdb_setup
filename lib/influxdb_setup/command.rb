@@ -1,5 +1,7 @@
 module InfluxdbSetup
   class Command
+    attr_reader :config
+
     def initialize(config)
       @config = config
     end
