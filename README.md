@@ -23,7 +23,7 @@ your `config/deploy.rb`.
 
 This will run the setup on deploy (creating database, shard spaces, and
 continuous queries). It will also mark the deploy in the "deploys" table in
-your influxdb.
+your influxdb. See the example `influxdb_queries.yml` for the archive queries.
 
 ## Usage
 
@@ -78,6 +78,8 @@ example:
 ---
  - select * from "response_times" into response_times.[rails_env]
  - select mean(value),count(value),percentile(value,95.0) as 95th,percentile(value,99.0) as 99th from "response_times.production" group by time(1h) into archive.response_times.1h
+ - select * from "deploys" into deploys.[rails_env]
+ - select * from "deploys.production" into archive.deploys
 ```
 
 Make sure your queries match what the server coerces them into (no spaces
