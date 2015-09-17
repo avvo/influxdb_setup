@@ -3,8 +3,16 @@ require 'erb'
 
 module InfluxdbSetup
   class Config
+    class << self
+      attr_writer :config
+    end
+
+    def self.config
+      @config ||= YAML.load(ERB.new(File.read("config/influxdb.yml")).result)[env]
+    end
+
     def initialize
-      @config = YAML.load(ERB.new(File.read("config/influxdb.yml")).result)[env]
+      @config = self.class.config
     end
 
     def env
