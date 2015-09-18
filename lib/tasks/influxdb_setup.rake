@@ -1,5 +1,5 @@
 namespace :influxdb do
-  task :config do
+  task :config => [:environment] do
     @influxdb_setup = InfluxdbSetup::Commands.new
   end
 
