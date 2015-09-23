@@ -6,7 +6,7 @@ module InfluxdbSetup
       url = root.send :full_url, "/cluster/configuration"
       configuration = root.send :get, url
 
-      existing_queries = configuration["ContinuousQueries"][db].each_with_object({}) do |row, acc|
+      existing_queries = configuration["ContinuousQueries"].fetch(db, {}).each_with_object({}) do |row, acc|
         acc[row['Id']] = row['Query']
       end
       expected_queries = YAML.load_file("db/influxdb_queries.yml")

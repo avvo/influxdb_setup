@@ -27,7 +27,10 @@ module InfluxdbSetup
       actual_default_shard = root.get_shard_space(db, "default")
       actual_archive_shard = root.get_shard_space(db, "archives")
 
-      if actual_default_shard != expected_default_config
+      if actual_default_shard.nil?
+        log "Creating default shard space"
+        root.create_shard_space(db, expected_default_config.except("database"))
+      elsif actual_default_shard != expected_default_config
         log "Updating default shard space"
         root.update_shard_space(db, "default", expected_default_config.except("database"))
       else
