@@ -6,24 +6,20 @@ module InfluxdbSetup
       @config = Config.new
     end
 
-    def create_db
-      CreateDb.new(config).call if @config.enabled?
-    end
-
-    def setup_shard_spaces
-      SetupShardSpaces.new(config).call if @config.enabled?
-    end
-
-    def create_user
-      CreateUser.new(config).call if @config.enabled?
-    end
-
-    def load_queries
-      LoadQueries.new(config).call if @config.enabled?
-    end
-
-    def mark_deploy(commit)
-      MarkDeploy.new(config).call(commit) if @config.enabled?
+    {
+      create_db: CreateDb,
+      setup_shard_spaces: SetupShardSpaces,
+      create_user: CreateUser,
+      load_queries: LoadQueries,
+      mark_deploy: MarkDeploy,
+    }.each do |cmd, klass|
+      define_method cmd do |*args|
+        begin
+          klass.new(config).call(*args) if config.enabled?
+        rescue InfluxDB::ConnectionError => e
+          puts "[InfluxdbSetup##{cmd}] Skipping... #{e.message}"
+        end
+      end
     end
   end
 end
