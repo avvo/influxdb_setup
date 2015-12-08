@@ -129,6 +129,10 @@ version you just cut.)
 Bug reports and pull requests are welcome on GitLab at
 https://gitlab.corp.avvo.com/avvo/influxdb_setup.
 
+## Changelog
+
+v0.3.0 - added the ability to skip influxdb setup by setting the capistrano variable skip_influx_setup
+
 
 ## License
 
