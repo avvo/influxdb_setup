@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
     raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
   end
 
-  spec.add_dependency "influxdb", "~> 0.1.9"
+  spec.add_dependency "influxdb", "~> 0.2.3"
 
   spec.add_development_dependency "bundler", "~> 1.10"
   spec.add_development_dependency "rake", "~> 10.0"
