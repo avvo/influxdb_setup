@@ -3,19 +3,15 @@ module InfluxdbSetup
     def call
       db = @config.db_name
       root = @config.build_client(db)
-      url = root.send :full_url, "/cluster/configuration"
-      configuration = root.send :get, url
 
-      existing_queries = configuration["ContinuousQueries"].fetch(db, {}).each_with_object({}) do |row, acc|
-        acc[row['Id']] = row['Query']
-      end
+      existing_queries = root.list_continuous_queries(db)
       expected_queries = YAML.load_file("db/influxdb_queries.yml")
 
       no_change = 0
-      expected_queries.each do |query|
-        unless existing_queries.values.include?(query)
+      expected_queries.each_with_index do |query, index|
+        unless existing_queries.map(&:query).include?(query)
           log "Adding '#{query}'"
-          root.query query
+          root.create_continuous_query("config query #{index}", db, query)
         else
           no_change += 1
         end
@@ -23,10 +19,10 @@ module InfluxdbSetup
 
       log "There were #{no_change} continuous queries that required no updates"
 
-      existing_queries.each do |(id, query)|
-        unless expected_queries.include?(query)
-          log "Removing '#{query}'"
-          root.query "drop continuous query #{id}"
+      existing_queries.each do |query|
+        unless expected_queries.include?(query.query)
+          log "Removing '#{query.name}'"
+          root.delete_continuous_query(query.name, db)
         end
       end
     end

@@ -4,7 +4,7 @@ module InfluxdbSetup
       db = @config.db_name
       root = @config.build_client(db)
 
-      root.write_point("deploys", {
+      root.write_point("deploys", values: {
         rails_env: config.env,
         commit: commit
       })

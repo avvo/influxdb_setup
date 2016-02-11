@@ -6,9 +6,9 @@ module InfluxdbSetup
       pass = @config.password
 
       root = @config.build_client
-      users = root.get_database_user_list(db).map { |row| row["name"] }
+      users = root.list_users.map{|user_hash| user_hash["username"]}
 
-      unless users.include?(db)
+      unless users.include?(user)
         root.create_database_user(db, user, pass)
       else
         log "Influxdb user '#{user}'@'#{db}' already exists"
