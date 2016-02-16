@@ -1,6 +1,6 @@
 # InfluxdbSetup
 
-For configuring the influxdb database, shard spaces, and continuous queries.
+For configuring the influxdb database, and continuous queries.
 
 ## Installation
 
@@ -21,7 +21,7 @@ And then execute:
 To have the task run on deploy, add `require "influxdb_setup/capistrano"` to
 your `config/deploy.rb`.
 
-This will run the setup on deploy (creating database, shard spaces, and
+This will run the setup on deploy (creating database, user, and
 continuous queries). It will also mark the deploy in the "deploys" table in
 your influxdb. See the example `influxdb_queries.yml` for the archive queries.
 
@@ -91,10 +91,6 @@ If there's queries to update the task will not do anything.
 `rake influxdb:create_db`
 Creates the database for the service if it doesn't already exist.
 
-`rake influxdb:setup_shard_spaces`
-Creates or updates the default and archives shard spaces. If they don't exist,
-it creates them. If they do exist but they are not correct, it updates them.
-
 `rake influxdb:create_user`
 Creates the user for the service if it doesn't already exist.
 
@@ -131,6 +127,7 @@ https://gitlab.corp.avvo.com/avvo/influxdb_setup.
 
 ## Changelog
 
+v0.4.0 - Upgrade influxdb gem to handle InfluxDB v0.9.x and greater and remove shard space setup support
 v0.3.1 - automatically skip influxdb setup on a rollback
 v0.3.0 - added the ability to skip influxdb setup by setting the capistrano variable skip_influx_setup
 

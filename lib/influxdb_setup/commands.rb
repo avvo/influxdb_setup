@@ -8,7 +8,6 @@ module InfluxdbSetup
 
     {
       create_db: CreateDb,
-      setup_shard_spaces: SetupShardSpaces,
       create_user: CreateUser,
       load_queries: LoadQueries,
       mark_deploy: MarkDeploy,
