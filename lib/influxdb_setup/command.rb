@@ -7,7 +7,7 @@ module InfluxdbSetup
     end
 
     def log(message)
-      puts "[InfluxdbSetup] #{message}"
+      @config.logger.info "[InfluxdbSetup] #{message}"
     end
   end
 end

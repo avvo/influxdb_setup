@@ -11,8 +11,11 @@ module InfluxdbSetup
       @config ||= YAML.load(ERB.new(File.read("config/influxdb.yml")).result)[env]
     end
 
+    attr_accessor :logger
+
     def initialize
       @config = self.class.config
+      @logger = Logger.new(STDOUT)
     end
 
     def env
