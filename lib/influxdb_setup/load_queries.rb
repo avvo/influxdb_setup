@@ -13,7 +13,7 @@ module InfluxdbSetup
       end
     end
 
-    NotAHashError = Class.new(StandardError)
+    FileFormatError = Class.new(StandardError)
 
     def call
       queries_file = Pathname.new("db/influxdb_queries.yml")
@@ -23,7 +23,7 @@ module InfluxdbSetup
         root = @config.build_client(db)
         existing_queries = root.list_continuous_queries(db)
         raw = YAML.load_file(queries_file.to_s) || {}
-        raise NotAHashError, "expected influxdb_queries.yml to be a hash, was a #{raw.class.name}" unless raw.is_a?(Hash)
+        raise FileFormatError, "expected influxdb_queries.yml to be a hash, was a #{raw.class.name}" unless raw.is_a?(Hash)
 
         expected_queries = raw.map do |name, query|
           Query.new(name, query)

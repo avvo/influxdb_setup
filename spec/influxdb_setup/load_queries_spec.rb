@@ -182,7 +182,7 @@ minnie:
         YAML
       end
       it "raises an error" do
-        expect { subject.call }.to raise_error(InfluxdbSetup::LoadQueries::NotAHashError)
+        expect { subject.call }.to raise_error(InfluxdbSetup::LoadQueries::FileFormatError)
       end
     end
   end
