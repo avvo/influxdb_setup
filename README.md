@@ -123,7 +123,7 @@ version you just cut.)
 ## Contributing
 
 Bug reports and pull requests are welcome on GitLab at
-https://gitlab.corp.avvo.com/avvo/influxdb_setup.
+https://github.com/avvo/influxdb_setup.
 
 ## Changelog
 

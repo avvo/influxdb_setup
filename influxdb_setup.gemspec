@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["dplummer@avvo.com"]
 
   spec.summary       = %q{Rake task for setting up an influxdb database and queries}
-  spec.homepage      = "https://gitlab.corp.avvo.com/avvo/influxdb_setup"
+  spec.homepage      = "https://github.com/avvo/influxdb_setup"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
