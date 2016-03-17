@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 CHANGELOG inspiration from http://keepachangelog.com/.
 
 ## Unreleased
+
+## [0.5.0] - March 17, 2016
 * Update influxdb_queries.yml and LoadQueries for InfluxDB 0.10
 
 ## [0.4.1] - March 4, 2016
