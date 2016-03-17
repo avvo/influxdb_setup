@@ -1,5 +1,6 @@
 require 'yaml'
 require 'erb'
+require 'influxdb'
 
 module InfluxdbSetup
   class Config
@@ -13,9 +14,9 @@ module InfluxdbSetup
 
     attr_accessor :logger
 
-    def initialize
-      @config = self.class.config
-      @logger = Logger.new(STDOUT)
+    def initialize(config: self.class.config, logger: Logger.new(STDOUT))
+      @config = config
+      @logger = logger
     end
 
     def env
