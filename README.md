@@ -76,10 +76,14 @@ example:
 
 ```yaml
 ---
- - select median(value) as median,mean(value) as mean,count(value) as count into one_hour_stag_response_times from "response_times" where rails_env='stag' group by time(1h)
- - select median(value) as median,mean(value) as mean,count(value) as count into one_hour_prod_response_times from "response_times" where rails_env='production' group by time(1h)
- - select count(commit) as deploys into prod_deploys_per_hour from "deploys" where rails_env='production' group by time(1h)
- - select count(commit) as deploys into stag_deploys_per_hour from "deploys" where rails_env='stag' group by time(1h)
+stag_times:
+  select median(value) as median,mean(value) as mean,count(value) as count into one_hour_stag_response_times from "response_times" where rails_env='stag' group by time(1h)
+prod_times:
+  select median(value) as median,mean(value) as mean,count(value) as count into one_hour_prod_response_times from "response_times" where rails_env='production' group by time(1h)
+prod_deploys:
+  select count(commit) as deploys into prod_deploys_per_hour from "deploys" where rails_env='production' group by time(1h)
+stag_deploys:
+  select count(commit) as deploys into stag_deploys_per_hour from "deploys" where rails_env='stag' group by time(1h)
 ```
 
 Make sure your queries match what the server coerces them into (no spaces
