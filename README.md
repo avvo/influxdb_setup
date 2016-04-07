@@ -105,6 +105,12 @@ in the `db/influxdb_queries.yml` file.
 `rake influxdb:setup`
 Runs all the above rake tasks.
 
+## Tests
+
+To run the tests, you need an influxdb host setup. If you're not running it on
+`localhost:8086`, you can specify where it's running with the `INFLUXDB_HOSTS`
+and `INFLUXDB_PORT` environmental variables.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run
