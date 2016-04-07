@@ -185,5 +185,36 @@ minnie:
         expect { subject.call }.to raise_error(InfluxdbSetup::LoadQueries::FileFormatError)
       end
     end
+
+    describe "erb interpolationz" do
+      let(:file_contents) do
+        <<-YAML
+---
+minnie:
+  SELECT <%= "min(moose)" %> INTO min_mouse FROM zoo GROUP BY time(30m)
+        YAML
+      end
+
+      it "logs that it's created" do
+        subject.call
+
+        expect(log).
+          to eq([
+            "[InfluxdbSetup] Adding 'minnie': 'SELECT min(moose) INTO min_mouse FROM zoo GROUP BY time(30m)'",
+          ])
+      end
+
+      it "saves the query to influxdb" do
+        subject.call
+
+        expect(client.list_continuous_queries(db)).
+          to eq([
+            {
+              "name" => "influxdb_setup_minnie",
+              "query" => "CREATE CONTINUOUS QUERY influxdb_setup_minnie ON influxdb_setup_test BEGIN SELECT min(moose) INTO influxdb_setup_test.\"default\".min_mouse FROM influxdb_setup_test.\"default\".zoo GROUP BY time(30m) END"
+            }
+        ])
+      end
+    end
   end
 end

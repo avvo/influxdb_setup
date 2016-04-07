@@ -22,7 +22,7 @@ module InfluxdbSetup
         db = @config.db_name
         root = @config.build_client(db)
         existing_queries = root.list_continuous_queries(db)
-        raw = YAML.load_file(queries_file.to_s) || {}
+        raw = YAML.load(ERB.new(queries_file.read).result) || {}
         raise FileFormatError, "expected influxdb_queries.yml to be a hash, was a #{raw.class.name}" unless raw.is_a?(Hash)
 
         expected_queries = raw.map do |name, query|
