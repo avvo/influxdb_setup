@@ -98,7 +98,7 @@ metrics:
 ```yaml
 ---
 prod_perc_95:
-  SELECT count(value) as count, percentile("value", 95) AS overall, <%= %q[cache db].map {|name| "percentile(\"#{name}\", 95) AS #{name}" } %> INTO prod_perc_95 FROM "response_times" WHERE "rails_env"='production' GROUP BY time(30m)
+  SELECT count(value) as count, percentile("value", 95) AS overall, <%= %w[cache db].map {|name| "percentile(\"#{name}\", 95) AS #{name}" } %> INTO prod_perc_95 FROM "response_times" WHERE "rails_env"='production' GROUP BY time(30m)
 ```
 
 ## Rake tasks
