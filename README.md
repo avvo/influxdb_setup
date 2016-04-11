@@ -90,6 +90,17 @@ Make sure your queries match what the server coerces them into (no spaces
 after commas) by running the `rake influxdb:load_queries` task multiple times.
 If there's queries to update the task will not do anything.
 
+### ERB enabled continuous queries
+
+The `db/influxdb_queries.yml` file is ERB-enabled, so you can de-duplicate some
+metrics:
+
+```yaml
+---
+prod_perc_95:
+  SELECT count(value) as count, percentile("value", 95) AS overall, <%= %q[cache db].map {|name| "percentile(\"#{name}\", 95) AS #{name}" } %> INTO prod_perc_95 FROM "response_times" WHERE "rails_env"='production' GROUP BY time(30m)
+```
+
 ## Rake tasks
 
 `rake influxdb:create_db`
