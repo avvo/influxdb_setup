@@ -5,11 +5,11 @@ module InfluxdbSetup
       root = @config.build_client(db)
 
       root.write_point("deploys", values: {
-        rails_env: config.env,
+        rails_env: Config.env,
         commit: commit
       })
 
-      log("Marked deploy: #{config.env} at sha #{commit}")
+      log("Marked deploy: #{Config.env} at sha #{commit}")
     end
   end
 end
