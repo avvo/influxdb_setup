@@ -19,7 +19,7 @@ module InfluxdbSetup
       @logger = logger
     end
 
-    def env
+    def self.env
       defined?(Rails) ? Rails.env : ENV.fetch('RAILS_ENV', 'development')
     end
 
