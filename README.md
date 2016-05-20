@@ -7,8 +7,6 @@ For configuring the influxdb database, and continuous queries.
 Add these lines to your application's Gemfile:
 
 ```ruby
-source 'http://gems.corp.avvo.com'
-
 gem 'influxdb_setup'
 ```
 
@@ -128,23 +126,21 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run
 `rake spec` to run the tests. You can also run `bin/console` for an interactive
 prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To
-release a new version, update the version number in `version.rb`, and then run
-`bundle exec rake release`, which will create a git tag for the version, push
-git commits and tags, and push the `.gem` file to
-[rubygems.org](https://rubygems.org).
-
-To cut a gem:
-
-1. Bump the version in `lib/influxdb_setup/version.rb`
-2. Build the gem `gem_push=no rake release`
-3. Push to geminabox `gem inabox pkg/influxdb_setup-0.1.0.gem` (or whatever
-version you just cut.)
+To install this gem onto your local machine, run `bundle exec rake install`.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitLab at
-https://github.com/avvo/influxdb_setup.
+Bug reports and pull requests are welcome on GitHub at
+https://github.com/avvo/influxdb_setup. Please update the CHANGELOG
+**unreleased** section with your changes. Please do not update version file in
+pull request.
+
+## Release Process
+
+1. The version.rb file should only ever be updated in master, don't update it in your branch.
+2. Once changes have been merged to master:
+3. Update CHANGELOG.md and version.rb file with new version. Commit as "Bump version".
+4. Run `rake release`, which will create a git tag for the version, push git commits and tags.
 
 ## License
 
