@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 CHANGELOG inspiration from http://keepachangelog.com/.
 
 ## Unreleased
+* Fix Config.env method to be class, so that Config.config works if you don't set it first.
 
 ## [1.0.0] - April 8, 2016
 * Public release

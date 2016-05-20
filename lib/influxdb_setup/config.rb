@@ -12,15 +12,15 @@ module InfluxdbSetup
       @config ||= YAML.load(ERB.new(File.read("config/influxdb.yml")).result)[env]
     end
 
+    def self.env
+      defined?(Rails) ? Rails.env : ENV.fetch('RAILS_ENV', 'development')
+    end
+
     attr_accessor :logger
 
     def initialize(config: self.class.config, logger: Logger.new(STDOUT))
       @config = config
       @logger = logger
-    end
-
-    def env
-      defined?(Rails) ? Rails.env : ENV.fetch('RAILS_ENV', 'development')
     end
 
     def db_name
