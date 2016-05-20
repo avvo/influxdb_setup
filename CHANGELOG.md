@@ -5,6 +5,9 @@ CHANGELOG inspiration from http://keepachangelog.com/.
 
 ## Unreleased
 
+## [1.0.0] - April 8, 2016
+* Public release
+
 ## [0.5.0] - March 17, 2016
 * Update influxdb_queries.yml and LoadQueries for InfluxDB 0.10
 
