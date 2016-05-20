@@ -146,13 +146,6 @@ version you just cut.)
 Bug reports and pull requests are welcome on GitLab at
 https://github.com/avvo/influxdb_setup.
 
-## Changelog
-
-v0.4.0 - Upgrade influxdb gem to handle InfluxDB v0.9.x and greater and remove shard space setup support
-v0.3.1 - automatically skip influxdb setup on a rollback
-v0.3.0 - added the ability to skip influxdb setup by setting the capistrano variable skip_influx_setup
-
-
 ## License
 
 The gem is available as open source under the terms of the

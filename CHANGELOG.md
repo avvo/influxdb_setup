@@ -12,3 +12,12 @@ CHANGELOG inspiration from http://keepachangelog.com/.
 * Skip loading continuous queries if influxdb_queries.yml file doesn't exist.
 * Use a real logger object, this will cause timestamps to be printed, and makes
   testing easier.
+
+## [0.4.0]
+* Upgrade influxdb gem to handle InfluxDB v0.9.x and greater and remove shard space setup support
+
+## [0.3.1]
+* automatically skip influxdb setup on a rollback
+
+## [0.3.0]
+* added the ability to skip influxdb setup by setting the capistrano variable skip_influx_setup
