@@ -5,6 +5,9 @@ CHANGELOG inspiration from http://keepachangelog.com/.
 
 ## Unreleased
 
+## [1.1.0] - August 1, 2016
+* Support configuration of retention policies
+
 ## [1.0.1] - May 20, 2016
 * Fix Config.env method to be class, so that Config.config works if you don't set it first.
 
