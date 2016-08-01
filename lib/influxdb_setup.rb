@@ -6,6 +6,7 @@ module InfluxdbSetup
   autoload :Config, "influxdb_setup/config"
   autoload :CreateDb, "influxdb_setup/create_db"
   autoload :CreateUser, "influxdb_setup/create_user"
+  autoload :CreateRetentionPolicy, "influxdb_setup/create_retention_policy"
   autoload :LoadQueries, "influxdb_setup/load_queries"
   autoload :MarkDeploy, "influxdb_setup/mark_deploy"
 
