@@ -40,7 +40,13 @@ default: &default
   retry: <%= ENV.fetch('INFLUXDB_RETRY', 'true') == "true" %>       # default true
   use_ssl: <%= ENV.fetch('INFLUXDB_USE_SSL', 'false') == "true" %>  # default false
   enabled: <%= ENV.fetch('INFLUXDB_ENABLED', 'false') == "true" %>  # default false
-
+  retention_policies:
+    - name: 'default'
+      duration: '4w'
+      replication: 1
+    - name: 'archive'
+      duration: 'INF'
+      replication: 1
 
 development:
   <<: *default
@@ -48,6 +54,13 @@ development:
   async: false
   enabled: true
   retry: false
+  retention_policies:
+   - name: 'default'
+     duration: '4w'
+     replication: 1
+   - name: 'archive'
+     duration: 'INF'
+     replication: 1
 
 ec2:
   <<: *default
@@ -106,6 +119,9 @@ Creates the database for the service if it doesn't already exist.
 
 `rake influxdb:create_user`
 Creates the user for the service if it doesn't already exist.
+
+`rake influxdb:create_retention_policy`
+Creates retention policies if they don't exist and alters retention policies if they already exist.
 
 `rake influxdb:load_queries`
 Creates any continuous queries that are missing. Removes queries that are not
