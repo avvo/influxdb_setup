@@ -70,12 +70,12 @@ test:
 
 stag:
   <<: *default
-  hosts: ["fs2wad.prod.avvo.com"]
+  hosts: ["your-local-influx-host"]
   enabled: true
 
 production:
   <<: *default
-  hosts: ["fs2wad.prod.avvo.com"]
+  hosts: ["your-local-influx-host"]
   enabled: true
 
 docker:
