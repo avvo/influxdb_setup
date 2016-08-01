@@ -13,6 +13,11 @@ namespace :influxdb do
     @influxdb_setup.create_user
   end
 
+  desc "Create the retention policies"
+  task :create_retention_policy => [:config] do
+    @influxdb_setup.create_retention_policy
+  end
+
   desc "Loads the continuous queries from db/influxdb_queries.yml"
   task :load_queries => [:config] do
     @influxdb_setup.load_queries
@@ -26,5 +31,6 @@ namespace :influxdb do
   desc "Run all the tasks to setup influxdb for the service"
   task :setup => [:create_db,
                   :create_user,
+                  :create_retention_policy,
                   :load_queries]
 end

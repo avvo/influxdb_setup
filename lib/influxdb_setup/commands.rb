@@ -9,6 +9,7 @@ module InfluxdbSetup
     {
       create_db: CreateDb,
       create_user: CreateUser,
+      create_retention_policy: CreateRetentionPolicy,
       load_queries: LoadQueries,
       mark_deploy: MarkDeploy,
     }.each do |cmd, klass|

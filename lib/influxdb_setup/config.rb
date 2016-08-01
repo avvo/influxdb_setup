@@ -39,15 +39,19 @@ module InfluxdbSetup
       @config['password']
     end
 
+    def retention_policies
+      @config['retention_policies']
+    end
+
     def build_client(database = "", options = {})
       InfluxDB::Client.new(database,
                           {
-                            username: "root",
-                            password: "root",
-                            hosts:    @config["hosts"],
-                            port:     @config.fetch("port", 8086),
-                            async:    false,
-                            use_ssl:  @config.fetch("use_ssl", false),
+                            username: @config.fetch('username', 'root'),
+                            password: @config.fetch('password', 'root'),
+                            hosts:    @config['hosts'],
+                            port:     @config.fetch('port', 8086),
+                            async:    @config.fetch('async', false),
+                            use_ssl:  @config.fetch('use_ssl', false),
                             retry:    false,
                           }.merge(options))
     end
