@@ -4,9 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 CHANGELOG inspiration from http://keepachangelog.com/.
 
 ## Unreleased
-
-## [1.1.0] - August 1, 2016
 * Support configuration of retention policies
+* Support specifying config file instead of using the default one
+* Fix crash in create_user task when not specifing user in config
 
 ## [1.0.1] - May 20, 2016
 * Fix Config.env method to be class, so that Config.config works if you don't set it first.
