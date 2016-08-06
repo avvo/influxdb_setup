@@ -9,7 +9,7 @@ module InfluxdbSetup
     end
 
     def self.config
-      config_file = ENV.fetch('CONFIG', 'config/influxdb.yml')
+      config_file = ENV.fetch('INFLUXDB_CONFIG_FILE', 'config/influxdb.yml')
       @config ||= YAML.load(ERB.new(File.read(config_file)).result)[env]
     end
 
