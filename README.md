@@ -26,7 +26,9 @@ your influxdb. See the example `influxdb_queries.yml` for the archive queries.
 ## Usage
 
 This library expects your influxdb config to be located in the
-`config/influxdb.yml` file. For example (change *myapp* to your application
+`config/influxdb.yml` file. You can also specify a config file
+by using the INFLUXDB_CONFIG_FILE environment variable. For example (change
+*myapp* to your application
 name):
 
 ```yaml
@@ -129,6 +131,9 @@ in the `db/influxdb_queries.yml` file.
 
 `rake influxdb:setup`
 Runs all the above rake tasks.
+
+`INFLUXDB_CONFIG_FILE=/your/config/file/path rake influxdb:setup`
+Use specified config file. Here ```setup``` could be any other tasks supported.
 
 ## Tests
 

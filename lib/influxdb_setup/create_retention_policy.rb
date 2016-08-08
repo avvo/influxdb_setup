@@ -8,10 +8,10 @@ module InfluxdbSetup
       rcs = root.list_retention_policies(db).map { |row| row["name"] }
 
       retention_policies.each do |rc|
-        if rc.include? rc
-          influxdb.alter_retention_policy(rc['name'], db, rc['duration'], rc['replication'])
+        if rcs.include? rc['name']
+          root.alter_retention_policy(rc['name'], db, rc['duration'], rc['replication'])
         else
-          influxdb.create_retention_policy(rc['name'], db, rc['duration'], rc['replication'])
+          root.create_retention_policy(rc['name'], db, rc['duration'], rc['replication'])
         end
       end
     end
