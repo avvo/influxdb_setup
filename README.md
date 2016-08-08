@@ -27,7 +27,7 @@ your influxdb. See the example `influxdb_queries.yml` for the archive queries.
 
 This library expects your influxdb config to be located in the
 `config/influxdb.yml` file. You can also specify a config file
-by using the CONFIG environment variable. For example (change
+by using the INFLUXDB_CONFIG_FILE environment variable. For example (change
 *myapp* to your application
 name):
 
