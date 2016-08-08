@@ -1,8 +1,12 @@
 language: ruby
+sudo: required
+
+services:
+  - docker
+
 rvm:
   - 2.2.3
+
 before_install:
   - gem install bundler -v 1.10.6
-  - wget http://s3.amazonaws.com/influxdb/influxdb_latest_amd64.deb
-  - dpkg -i influxdb_latest_amd64.deb
-  - service influxdb start
+  - docker run -d -p 8083:8083 -p 8086:8086 tutum/influxdb
