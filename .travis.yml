@@ -1,4 +1,8 @@
 language: ruby
 rvm:
   - 2.2.3
-before_install: gem install bundler -v 1.10.6
+before_install:
+  - gem install bundler -v 1.10.6
+  - wget http://s3.amazonaws.com/influxdb/influxdb_latest_amd64.deb
+  - dpkg -i influxdb_latest_amd64.deb
+  - service influxdb start
