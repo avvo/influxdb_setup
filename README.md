@@ -132,7 +132,7 @@ in the `db/influxdb_queries.yml` file.
 `rake influxdb:setup`
 Runs all the above rake tasks.
 
-`CONFIG=/your/config/file/path rake influxdb:setup`
+`INFLUXDB_CONFIG_FILE=/your/config/file/path rake influxdb:setup`
 Use specified config file. Here ```setup``` could be any other tasks supported.
 
 ## Tests
