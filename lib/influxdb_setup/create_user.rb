@@ -8,7 +8,7 @@ module InfluxdbSetup
       root = @config.build_client
       users = root.list_users.map{|user_hash| user_hash["username"]}
 
-      if user == nil
+      if user.nil?
         log "Influxdb user not specified, using the default one..."
       elsif users.include?(user)
         log "Influxdb user '#{user}'@'#{db}' already exists"
