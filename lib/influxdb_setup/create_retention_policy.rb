@@ -1,8 +1,10 @@
 module InfluxdbSetup
   class CreateRetentionPolicy < Command
     def call
-      db = @config.db_name
       retention_policies = @config.retention_policies
+      return if retention_policies.nil?
+
+      db = @config.db_name
 
       root = @config.build_client
       rcs = root.list_retention_policies(db).map { |row| row["name"] }
