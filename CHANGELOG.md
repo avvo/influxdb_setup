@@ -5,6 +5,9 @@ CHANGELOG inspiration from http://keepachangelog.com/.
 
 ## Unreleased
 
+## [1.1.1] - August 22, 2016
+* Fix bug in CreateRetentionPolicy when no policies configured in YAML.
+
 ## [1.1.0] - August 8, 2016
 * Support configuration of retention policies
 * Support specifying config file instead of using the default one
